@@ -3,6 +3,10 @@ $(function () {
     $el: $('#product-table-app'),
     url: 'https://raw.githubusercontent.com/yha-1228/jsons/master/list.json',
   })
+
+  $('#reset').on('click', () => {
+    location.reload()
+  })
 })
 
 /**
