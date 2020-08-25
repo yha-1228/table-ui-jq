@@ -8,7 +8,7 @@ $colorGray03: #cccccc;
 $colorGray04: #eeeeee;
 $colorGray05: #f8f8f8;
 $colorBackground: #fff;
-$colorPrimary: #0181d0;
+$colorPrimary: #1b21d5;
 $breakpointSm: 576px;
 $breakpointMd: 768px;
 $breakpointLg: 992px;
@@ -114,9 +114,11 @@ select {
 // ============================================================
 
 .heading-lv1 {
-  margin-bottom: 24px;
-  font-size: 26px;
-  font-weight: bold;
+  margin-bottom: 26px;
+  font-size: 36px;
+  // font-weight: bold;
+  letter-spacing: 0.07rem;
+  color: $colorPrimary;
 }
 
 // dropdown
