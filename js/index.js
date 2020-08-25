@@ -144,15 +144,25 @@ class ProductTableApp {
     const $selectedBrand = this.$filterBrand.find('option:selected')
     const $selectedCategory = this.$filterCategory.find('option:selected')
 
-    return products.filter(
-      (product) =>
-        ($selectedBrand.val() === 'all'
-          ? product
-          : product.brand === $selectedBrand.text()) &&
-        ($selectedCategory.val() === 'all'
-          ? product
-          : product.category === $selectedCategory.text())
-    )
+    /**
+     * @param {Object} product
+     */
+    const isBrandValid = (product) => {
+      return $selectedBrand.val() === 'all'
+        ? product
+        : product.brand === $selectedBrand.text()
+    }
+
+    /**
+     * @param {Object} product
+     */
+    const isCategoryValid = (product) => {
+      return $selectedCategory.val() === 'all'
+        ? product
+        : product.category === $selectedCategory.text()
+    }
+
+    return products.filter(isBrandValid).filter(isCategoryValid)
   }
 
   /**
