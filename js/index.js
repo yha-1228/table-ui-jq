@@ -76,7 +76,6 @@ class ProductTableApp {
 
   bindEvents() {
     this.handleChange = this.handleChange.bind(this)
-    this.handleResetClick = this.handleResetClick.bind(this)
     this.$handleTable.on('change', this.handleChange)
   }
 
