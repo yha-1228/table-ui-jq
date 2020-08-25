@@ -10,133 +10,103 @@
   </head>
 
   <body>
-    <div class="wrapper flex">
-      <div class="menubar">
-        <div class="menubar-row">
-          <nav class="nav">
-            <ul>
-              <li class="nav-item">
-                <a href="#/1">
-                  <div class="nav-item-container">Users</div>
-                </a>
-              </li>
-              <li class="nav-item selected">
-                <a href="#/2">
-                  <div class="nav-item-container">Products</div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#/3">
-                  <div class="nav-item-container">Addresses</div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#/4">
-                  <div class="nav-item-container">Settings</div>
-                </a>
-              </li>
-            </ul>
-          </nav>
+    <div class="container">
+      <div class="mb20">
+        <div class="button bold align-center" id="reset">
+          <i class="fas fa-sync-alt"></i>&nbsp;&nbsp;RESET
         </div>
       </div>
-      <!-- /.menubar -->
+      <h1 class="heading-lv1">Products</h1>
 
-      <div class="main">
-        <div class="main-container">
-          <h1 class="heading-lv1">Products</h1>
-
-          <div class="table-app" id="product-table-app">
-            <div class="table-handler">
-              <div class="table-handler-dropdown-cell">
-                <div class="dropdown">
-                  <h3 class="dropdown-heading">
-                    <i class="fas fa-filter"></i> Brand
-                  </h3>
-                  <select
-                    class="select js-handle-table js-filter"
-                    id="filter-brand"
-                  >
-                    <option value="all">All</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="table-handler-dropdown-cell">
-                <div class="dropdown">
-                  <h3 class="dropdown-heading">
-                    <i class="fas fa-filter"></i> Category
-                  </h3>
-                  <select
-                    class="select js-handle-table js-filter"
-                    id="filter-category"
-                  >
-                    <option value="all">All</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="table-handler-dropdown-cell">
-                <div class="dropdown">
-                  <h3 class="dropdown-heading">
-                    <i class="fas fa-sort-amount-up-alt"></i> Sort by
-                  </h3>
-                  <select class="select js-handle-table" id="sort-by">
-                    <option value="none"> - </option>
-                    <option value="price">Price</option>
-                    <option value="created_at">Created at</option>
-                    <option value="updated_at">Updated at</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="table-handler-dropdown-cell">
-                <!-- TODO: add label and create style -->
-                <input
-                  type="checkbox"
-                  class="js-handle-table"
-                  id="toggle"
-                  value="hiding-out-of-stock"
-                />
-                <label for="toggle">Hiding out-of-stock products</label>
-              </div>
+      <div class="table-app" id="product-table-app">
+        <div class="table-handler">
+          <div class="table-handler-dropdown-cell">
+            <div class="dropdown">
+              <h3 class="dropdown-heading">
+                <i class="fas fa-filter"></i> Brand
+              </h3>
+              <select
+                class="select js-handle-table js-filter"
+                id="filter-brand"
+              >
+                <option value="all">All</option>
+              </select>
             </div>
-            <!-- /.table-handler -->
+          </div>
 
-            <div class="table-wrapper">
-              <table class="table" id="table">
-                <thead>
-                  <tr class="table-head">
-                    <th class="table-cell align-right">ID</th>
-                    <th class="table-cell align-left">Brand</th>
-                    <th class="table-cell align-left">Name</th>
-                    <th class="table-cell align-left">Category</th>
-                    <th class="table-cell align-right">Price</th>
-                    <th class="table-cell align-left">Status</th>
-                    <th class="table-cell align-left">Created at</th>
-                    <th class="table-cell align-left">Updated at</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <!-- Loop -->
-                </tbody>
-              </table>
-
-              <div class="no-results hidden" id="no-results">
-                <p class="no-results-message">
-                  No results found.
-                </p>
-              </div>
-              <!-- /#no-results -->
+          <div class="table-handler-dropdown-cell">
+            <div class="dropdown">
+              <h3 class="dropdown-heading">
+                <i class="fas fa-filter"></i> Category
+              </h3>
+              <select
+                class="select js-handle-table js-filter"
+                id="filter-category"
+              >
+                <option value="all">All</option>
+              </select>
             </div>
-            <!-- /.table-wrapper -->
+          </div>
+
+          <div class="table-handler-dropdown-cell">
+            <div class="dropdown">
+              <h3 class="dropdown-heading">
+                <i class="fas fa-sort-amount-up-alt"></i> Sort by
+              </h3>
+              <select class="select js-handle-table" id="sort-by">
+                <option value="none"> - </option>
+                <option value="price">Price</option>
+                <option value="created_at">Created at</option>
+                <option value="updated_at">Updated at</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-handler-dropdown-cell">
+            <!-- TODO: add label and create style -->
+            <input
+              type="checkbox"
+              class="js-handle-table"
+              id="toggle"
+              value="hiding-out-of-stock"
+            />
+            <label for="toggle">Hiding out-of-stock products</label>
           </div>
         </div>
-        <!-- /.table-app -->
+        <!-- /.table-handler -->
+
+        <div class="table-wrapper">
+          <table class="table" id="table">
+            <thead>
+              <tr class="table-head">
+                <th class="table-cell align-right">ID</th>
+                <th class="table-cell align-left">Brand</th>
+                <th class="table-cell align-left">Name</th>
+                <th class="table-cell align-left">Category</th>
+                <th class="table-cell align-right">Price</th>
+                <th class="table-cell align-left">Status</th>
+                <th class="table-cell align-left">Created at</th>
+                <th class="table-cell align-left">Updated at</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Loop -->
+            </tbody>
+          </table>
+
+          <div class="no-results hidden" id="no-results">
+            <p class="no-results-message">
+              No results found.
+            </p>
+          </div>
+          <!-- /#no-results -->
+        </div>
+        <!-- /.table-wrapper -->
       </div>
-      <!-- /.main -->
+      <!-- /.table-app -->
     </div>
-    <!-- /.wrapper -->
+    <!-- /.container -->
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="js/index.js"></script>
   </body>

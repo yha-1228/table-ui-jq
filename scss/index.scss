@@ -21,47 +21,6 @@ $gridGutter: 30px;
 $zindexLevel01: 10;
 $zindexLevel02: 20;
 
-// mixins
-// ============================================================
-
-@mixin clearfix() {
-  &::after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-}
-
-@mixin mq($breakpoint) {
-  @media screen and (min-width: $breakpoint) {
-    @content;
-  }
-}
-
-@mixin containerFluid() {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 ($gridGutter / 2);
-}
-
-@mixin gridRow() {
-  @include clearfix();
-  margin-left: -($gridGutter / 2);
-  margin-right: -($gridGutter / 2);
-}
-
-@mixin gridCol($count) {
-  float: left;
-  width: percentage($count / 12);
-  padding: 0 ($gridGutter / 2);
-}
-
-@mixin transformCenter() {
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -50%);
-}
-
 // base
 // ============================================================
 
@@ -110,71 +69,22 @@ select {
   display: flex;
 }
 
-// layouts > app-wrapper
-// ============================================================
-
-.wrapper {
-  height: 100vh;
+.mb20 {
+  margin-bottom: 20px;
 }
 
-// ============================================================
-// layouts > menubar
-// ============================================================
-
-.menubar {
-  width: 220px;
-  height: 100vh;
-  padding: 24px 0;
-  background-color: $colorGray04;
+.bold {
+  font-weight: bold;
 }
 
-.nav-item {
-  line-height: 40px;
-  display: block;
-  font-size: 16px;
-  a {
-    color: $colorGray02;
-    transition: all 0.1s;
-
-    &:hover {
-      color: $colorPrimary;
-    }
-  }
-
-  &.selected {
-    a {
-      color: $colorPrimary;
-      font-weight: bold;
-    }
-    .nav-item-container {
-      border-left: 6px solid $colorPrimary;
-    }
-  }
-}
-
-.nav-item-container {
-  padding: 0 20px;
-  border-left: 6px solid transparent;
-}
-
-.main {
-  width: calc(100% - 220px);
-  height: 100vh;
-  padding: 24px 0;
-}
-
-.main-container {
-  padding: 0 32px;
-}
-
-// common > texts
+// texts
 // ============================================================
 
 .light-text {
   color: $colorGray02;
 }
 
-// common > button
+// button
 // ============================================================
 
 .button {
@@ -204,7 +114,7 @@ select {
   }
 }
 
-// common > heading
+// heading
 // ============================================================
 
 .heading-lv1 {
@@ -213,7 +123,7 @@ select {
   font-weight: bold;
 }
 
-// common > dropdown
+// dropdown
 // ============================================================
 
 .dropdown-heading {
@@ -252,7 +162,18 @@ select {
   }
 }
 
-// common > table
+// layouts
+// ============================================================
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+// table
 // ============================================================
 
 .table-app {
@@ -271,7 +192,7 @@ select {
 }
 
 .table-wrapper {
-  height: 68vh;
+  height: 70vh;
   overflow-y: scroll;
 }
 

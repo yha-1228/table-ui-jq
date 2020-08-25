@@ -42,55 +42,12 @@ select {
   display: flex;
 }
 
-.wrapper {
-  height: 100vh;
+.mb20 {
+  margin-bottom: 20px;
 }
 
-.menubar {
-  width: 220px;
-  height: 100vh;
-  padding: 24px 0;
-  background-color: #eeeeee;
-}
-
-.nav-item {
-  line-height: 40px;
-  display: block;
-  font-size: 16px;
-}
-
-.nav-item a {
-  color: #929292;
-  -webkit-transition: all 0.1s;
-  transition: all 0.1s;
-}
-
-.nav-item a:hover {
-  color: #0d3bf2;
-}
-
-.nav-item.selected a {
-  color: #0d3bf2;
+.bold {
   font-weight: bold;
-}
-
-.nav-item.selected .nav-item-container {
-  border-left: 6px solid #0d3bf2;
-}
-
-.nav-item-container {
-  padding: 0 20px;
-  border-left: 6px solid transparent;
-}
-
-.main {
-  width: calc(100% - 220px);
-  height: 100vh;
-  padding: 24px 0;
-}
-
-.main-container {
-  padding: 0 32px;
 }
 
 .light-text {
@@ -177,6 +134,14 @@ select {
           box-shadow: 0px 0px 0px 2px #0d3bf2;
 }
 
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .table-app {
   min-width: 768px;
 }
@@ -194,7 +159,7 @@ select {
 }
 
 .table-wrapper {
-  height: 68vh;
+  height: 70vh;
   overflow-y: scroll;
 }
 
