@@ -112,26 +112,22 @@ class ProductTableApp {
       })
     }
 
-    // val: String ('yyyy/mm/dd')
+    // val: String ('YYYY/MM/DD')
     if (val === 'created_at' || val === 'updated_at')
       return [...products].sort((a, b) => {
         /**
-         * Convert string to date
+         * Convert 'YYYY/MM/DD' string to date
          * @param {String} dateString
-         * @param {String} delimiter
          * @returns Date object
          */
-        function toDate(dateString, delimiter) {
-          const array = dateString.split(delimiter)
-          return new Date(array[0], array[1] - 1, array[2])
+        const toDate = (dateString) => {
+          const momentObject = moment(dateString, 'YYYY/MM/DD')
+          const dateObject = momentObject.toDate()
+          return dateObject
         }
 
-        if (toDate(a[val], '/') < toDate(b[val], '/')) {
-          return -1
-        }
-        if (toDate(a[val], '/') > toDate(b[val], '/')) {
-          return 1
-        }
+        if (toDate(a[val]) < toDate(b[val])) return -1
+        if (toDate(a[val]) > toDate(b[val])) return 1
         return 0
       })
   }
