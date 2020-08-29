@@ -1,9 +1,10 @@
 $(function () {
   new ProductTableApp({
     $el: $('#product-table-app'),
-    url: 'https://raw.githubusercontent.com/yha-1228/jsons/master/list.json',
-  })
-})
+    url:
+      'https://gist.githubusercontent.com/yha-1228/dafe947f4437e83deb91136203cb1f2b/raw/b6dafc69d9f71d6aa97b874d3a96bd7bb4f7d542/products.json',
+  });
+});
 
 /**
  * @param {jQuery object} options.$el
@@ -11,26 +12,26 @@ $(function () {
  */
 class ProductTableApp {
   constructor(options) {
-    this.initState()
-    this.defineElements(options.$el, this.state.products)
-    this.render(this.state.products)
+    this.initState();
+    this.defineElements(options.$el, this.state.products);
+    this.render(this.state.products);
     this.fetchJson(options.url).then(
-      (res) => {
-        this.state.isLoaded = true
-        this.state.products = res
-        this.defineElements(options.$el, this.state.products)
-        this.render(this.state.products)
-        this.bindEvents()
+      res => {
+        this.state.isLoaded = true;
+        this.state.products = res;
+        this.defineElements(options.$el, this.state.products);
+        this.render(this.state.products);
+        this.bindEvents();
       },
-      (jqXHR) => {
-        this.state.err = jqXHR
-        console.log(`ERR! ${this.state.err.responseText}`)
+      jqXHR => {
+        this.state.err = jqXHR;
+        console.log(`ERR! ${this.state.err.responseText}`);
       }
-    )
+    );
   }
 
   initState() {
-    this.state = { isLoaded: false, products: [], err: null }
+    this.state = { isLoaded: false, products: [], err: null };
   }
 
   /**
@@ -41,7 +42,7 @@ class ProductTableApp {
     return $.ajax({
       url: url,
       dataType: 'json',
-    })
+    });
   }
 
   /**
@@ -50,40 +51,40 @@ class ProductTableApp {
    * @param {Array} products
    */
   defineElements($el, products) {
-    const brands = [...new Set(products.map((product) => product.brand))]
-    const categories = [...new Set(products.map((product) => product.category))]
+    const brands = [...new Set(products.map(product => product.brand))];
+    const categories = [...new Set(products.map(product => product.category))];
 
-    this.$el = $el
-    this.$tbody = this.$el.find('tbody')
-    this.$noResults = this.$el.find('#no-results')
-    this.$handleTable = this.$el.find('.js-handle-table')
-    this.$sortBy = this.$el.find('#sort-by')
-    this.$filter = this.$el.find('.js-filter')
+    this.$el = $el;
+    this.$tbody = this.$el.find('tbody');
+    this.$noResults = this.$el.find('#no-results');
+    this.$handleTable = this.$el.find('.js-handle-table');
+    this.$sortBy = this.$el.find('#sort-by');
+    this.$filter = this.$el.find('.js-filter');
     this.$filterBrand = this.$el
       .find('#filter-brand')
       .append(
-        brands.map((brand) => `<option value="${brand}">${brand}</option>`)
-      )
+        brands.map(brand => `<option value="${brand}">${brand}</option>`)
+      );
     this.$filterCategory = this.$el
       .find('#filter-category')
       .append(
         categories.map(
-          (category) => `<option value="${category}">${category}</option>`
+          category => `<option value="${category}">${category}</option>`
         )
-      )
-    this.$hidingOutOfStock = this.$el.find('[value="hiding-out-of-stock"]')
+      );
+    this.$hidingOutOfStock = this.$el.find('[value="hiding-out-of-stock"]');
   }
 
   bindEvents() {
-    this.handleChange = this.handleChange.bind(this)
-    this.$handleTable.on('change', this.handleChange)
+    this.handleChange = this.handleChange.bind(this);
+    this.$handleTable.on('change', this.handleChange);
   }
 
   handleChange() {
-    const sorted = this.sort(this.state.products)
-    const filtered = this.filter(sorted)
-    const toggled = this.toggle(filtered)
-    this.render(toggled)
+    const sorted = this.sort(this.state.products);
+    const filtered = this.filter(sorted);
+    const toggled = this.toggle(filtered);
+    this.render(toggled);
   }
 
   /**
@@ -91,25 +92,25 @@ class ProductTableApp {
    * @returns {Array}
    */
   sort(products) {
-    const $selectedSortTarget = this.$sortBy.find('option:selected')
-    const val = $selectedSortTarget.val()
+    const $selectedSortTarget = this.$sortBy.find('option:selected');
+    const val = $selectedSortTarget.val();
 
     // No sort
     if (val === 'none') {
-      return products
+      return products;
     }
 
     // val: Number
     if (val === 'price') {
       return [...products].sort((a, b) => {
         if (a[val] < b[val]) {
-          return -1
+          return -1;
         }
         if (a[val] > b[val]) {
-          return 1
+          return 1;
         }
-        return 0
-      })
+        return 0;
+      });
     }
 
     // val: String ('YYYY/MM/DD')
@@ -120,16 +121,16 @@ class ProductTableApp {
          * @param {String} dateString
          * @returns Date object
          */
-        const toDate = (dateString) => {
-          const momentObject = moment(dateString, 'YYYY/MM/DD')
-          const dateObject = momentObject.toDate()
-          return dateObject
-        }
+        const toDate = dateString => {
+          const momentObject = moment(dateString, 'YYYY/MM/DD');
+          const dateObject = momentObject.toDate();
+          return dateObject;
+        };
 
-        if (toDate(a[val]) < toDate(b[val])) return -1
-        if (toDate(a[val]) > toDate(b[val])) return 1
-        return 0
-      })
+        if (toDate(a[val]) < toDate(b[val])) return -1;
+        if (toDate(a[val]) > toDate(b[val])) return 1;
+        return 0;
+      });
   }
 
   /**
@@ -137,28 +138,28 @@ class ProductTableApp {
    * @returns {Array}
    */
   filter(products) {
-    const $selectedBrand = this.$filterBrand.find('option:selected')
-    const $selectedCategory = this.$filterCategory.find('option:selected')
+    const $selectedBrand = this.$filterBrand.find('option:selected');
+    const $selectedCategory = this.$filterCategory.find('option:selected');
 
     /**
      * @param {Object} product
      */
-    const isBrandValid = (product) => {
+    const isBrandValid = product => {
       return $selectedBrand.val() === 'all'
         ? product
-        : product.brand === $selectedBrand.text()
-    }
+        : product.brand === $selectedBrand.text();
+    };
 
     /**
      * @param {Object} product
      */
-    const isCategoryValid = (product) => {
+    const isCategoryValid = product => {
       return $selectedCategory.val() === 'all'
         ? product
-        : product.category === $selectedCategory.text()
-    }
+        : product.category === $selectedCategory.text();
+    };
 
-    return products.filter(isBrandValid).filter(isCategoryValid)
+    return products.filter(isBrandValid).filter(isCategoryValid);
   }
 
   /**
@@ -167,21 +168,21 @@ class ProductTableApp {
    */
   toggle(products) {
     return this.$hidingOutOfStock.prop('checked')
-      ? products.filter((product) => product.stocked === true)
-      : products
+      ? products.filter(product => product.stocked === true)
+      : products;
   }
 
   render(products) {
-    const twoSpace = '&nbsp;&nbsp;'
+    const twoSpace = '&nbsp;&nbsp;';
 
     if (!this.state.isLoaded) {
-      this.$tbody.html('<div>Loading...</div>')
-      return
+      this.$tbody.html('<div>Loading...</div>');
+      return;
     }
 
     this.$tbody.html(
       products.map(
-        (product) =>
+        product =>
           `<tr class="table-row" data-key="${product.id}">
             <td class="table-cell align-right">${product.id}</td>
             <td class="table-cell align-left">${product.brand}</td>
@@ -197,10 +198,10 @@ class ProductTableApp {
             <td class="table-cell align-left">${product.updated_at}</td>
           </tr>`
       )
-    )
+    );
 
     products.length === 0
       ? this.$noResults.removeClass('hidden')
-      : this.$noResults.addClass('hidden')
+      : this.$noResults.addClass('hidden');
   }
 }
