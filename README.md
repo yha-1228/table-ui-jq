@@ -1,3 +1,3 @@
-jQueryベースで作成したテーブルUIです。
+Table UI using jQuery
 
-[Webサイトを見る](https://yha-1228.github.io/table-ui-jq/)
+See [https://yha-1228.github.io/table-ui-jq/] (https://yha-1228.github.io/table-ui-jq/)
