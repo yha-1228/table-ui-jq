@@ -32,8 +32,8 @@ $zindexLevel02: 20;
 
 body {
   background-color: $colorBackground;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   overscroll-behavior-y: none;
 }
 
@@ -116,7 +116,6 @@ select {
 .heading-lv1 {
   margin-bottom: 26px;
   font-size: 36px;
-  // font-weight: bold;
   letter-spacing: 0.07rem;
   color: $colorPrimary;
 }
